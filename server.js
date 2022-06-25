@@ -1,13 +1,12 @@
 const express = require("express");
+const scrips = require("./routes/scripts");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+app.use(scrips);
 
-app.get("/teste", (req, res) => {
-  res.send("ol222a 123");
+app.use((req, res) => {
+  res.status(404).json({ message: "resource not found" });
 });
 
 app.listen(3000, () => {

@@ -5,6 +5,7 @@ dotenv.config();
 const bodyParser = require("body-parser");
 const express = require("express");
 const scrips = require("./routes/scripts");
+const { database } = require("./utils/database");
 
 const app = express();
 
@@ -31,6 +32,8 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
-app.listen(3000, () => {
-  console.log("http://localhost:3000");
+database.raw("select 1").then(() => {
+  app.listen(3000, () => {
+    console.log("http://localhost:3000");
+  });
 });

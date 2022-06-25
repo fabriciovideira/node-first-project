@@ -1,20 +1,12 @@
 const endpoint = require("../functions/endpoint");
-const HttpError = require("../utils/HttpError");
+const { database } = require("../utils/database");
 
-exports.getScripts = endpoint(async (req, res) => {
-  if (Math.random() > 0.5) {
-    throw new HttpError(400, "erro");
-  }
+exports.postScripts = endpoint(async (req, res) => {
+  const { script } = req.body;
 
-  res.json({ message: "ola" });
-});
+  console.log(script)
 
-exports.postTest = endpoint(async (req, res) => {
-  console.log(req.body);
+  const resultado = await database.raw(script);
 
-  res.json({ message: "post" });
-});
-
-exports.getTeste = endpoint(async (req, res) => {
-  res.json({ message: "ola 2" });
+  res.json(resultado);
 });

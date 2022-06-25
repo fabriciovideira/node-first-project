@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/teste", (req, res) => {
-  res.send("ola");
+  res.send("ol222a 123");
 });
 
 app.listen(3000, () => {

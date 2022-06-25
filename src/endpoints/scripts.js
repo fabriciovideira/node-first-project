@@ -9,7 +9,9 @@ exports.getScripts = endpoint(async (req, res) => {
   res.json({ message: "ola" });
 });
 
-exports.getAAAA = endpoint(async (req, res) => {
+exports.postTest = endpoint(async (req, res) => {
+  console.log(req.body);
+
   res.json({ message: "post" });
 });
 
